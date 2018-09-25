@@ -1269,8 +1269,6 @@ data:
               - apiGroups:
                 - rbac.authorization.k8s.io
                 resources:
-                - clusterrole
-                - clusterrolebindings
                 - role
                 - rolebindings
                 - serviceaccounts
@@ -1283,6 +1281,7 @@ data:
               - apiGroups:
                 - ""
                 resources:
+                - serviceaccounts
                 - pods
                 - services
                 - endpoints
@@ -1301,6 +1300,21 @@ data:
                 - statefulsets
                 verbs:
                 - '*'
+
+            clusterPermissions:
+            - serviceAccountName: kubevirt-operator
+              rules:
+              - apiGroups:
+                - rbac.authorization.k8s.io
+                resources:
+                - clusterrole
+                - clusterrolebinding
+                verbs:
+                - get
+                - create
+                - delete
+                - patch
+                - update
 
             deployments:
             - name: kubevirt-operator
@@ -1388,8 +1402,6 @@ data:
               - apiGroups:
                 - rbac.authorization.k8s.io
                 resources:
-                - clusterrole
-                - clusterrolebindings
                 - role
                 - rolebindings
                 - serviceaccounts
@@ -1420,6 +1432,21 @@ data:
                 - statefulsets
                 verbs:
                 - '*'
+
+            clusterPermissions:
+            - serviceAccountName: kubevirt-operator
+              rules:
+              - apiGroups:
+                - rbac.authorization.k8s.io
+                resources:
+                - clusterrole
+                - clusterrolebinding
+                verbs:
+                - get
+                - create
+                - delete
+                - patch
+                - update
 
             deployments:
             - name: kubevirt-operator

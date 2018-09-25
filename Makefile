@@ -51,8 +51,6 @@ rm-olm:
 ##############
 
 cr:
-	# Temporary Hack: Need to fix rbac
-	oc adm policy add-cluster-role-to-user -z kubevirt-operator cluster-admin
 	oc create -f deploy/cr.yaml
 
 ##############
